@@ -1,0 +1,24 @@
+---
+# tasks file for helloworld
+
+- name: Copying the application file
+  copy:
+    src: myhelloworld.js
+    dest: /home/ubuntu/
+    owner: ubuntu
+    group: ubuntu
+    mode: 0644
+  notify: restart myhelloworld
+
+- name: Copying the upstart file
+  copy:
+    src: myhelloworld.service
+    dest: /lib/systemd/system/myhelloworld.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Starting the HelloWorld node service
+  service:
+    name: myhelloworld
+    state: started
