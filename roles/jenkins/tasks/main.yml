@@ -1,24 +1,17 @@
 ---
 # tasks file for jenkins
 
-- name: Import Jenkins GPG key 
-  rpm_key:  
-    state: present 
-    key: http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key 
+- command: wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+- command: sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 
-- name: Add Jenkins repository 
-  yum_repository: 
-    name: jenkins 
-    description: jenkins repository 
-    baseurl: http://pkg.jenkins.io/redhat 
-    enabled: no 
-    gpgcheck: yes 
-
-- name: Install Jenkins 
-  yum: 
-    name: jenkins-2.45
-    enablerepo: jenkins 
-    state: present 
+- name: apt update
+  apt:
+      update_cache: yes
+- name:  Install Jenkins & java sdk
+  apt: "name={{ item }} state=present"
+  with_items:
+    - openjdk-8-jdk
+    - jenkins
 
 - name: Start Jenkins 
   service: 
