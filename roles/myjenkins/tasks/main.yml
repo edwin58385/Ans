@@ -13,11 +13,11 @@
 - name: Install Jenkins
   command: sudo apt install -y jenkins --allow-unauthenticated
 
-- name:  Install Jenkins & java sdk
-  apt: "name={{ item }} state=present"
-  with_items:
-    - openjdk-8-jdk
-    - jenkins --allow-unauthenticated
+#- name:  Install Jenkins & java sdk
+#  apt: "name={{ item }} state=present"
+#  with_items:
+#    - openjdk-8-jdk
+#    - jenkins --allow-unauthenticated
 
 - name: Start Jenkins 
   service: 
