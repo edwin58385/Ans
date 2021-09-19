@@ -48,7 +48,6 @@
     - name: ensure jenkins is running
       service: name=jenkins state=started
 
-
 #- name:  Install Jenkins & java sdk
 #  apt: "name={{ item }} state=present"
 #  with_items:
