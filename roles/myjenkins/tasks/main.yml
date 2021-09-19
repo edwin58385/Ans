@@ -30,7 +30,8 @@
         state: present
   vars:
         packages:
-           - jenkins --allow-unauthenticated
+           - jenkins
+#--allow-unauthenticated
 
 #- name:  Install Jenkins & java sdk
 #  apt: "name={{ item }} state=present"
