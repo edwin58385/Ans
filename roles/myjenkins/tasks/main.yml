@@ -7,6 +7,11 @@
 - name: apt update
   apt:
       update_cache: yes
+- name: Install javajdk
+  command: sudo apt install -y openjdk-8-jdk
+
+  - name: Install Jenkins
+  command: sudo apt install -y jenkins --allow-unauthenticated
 
 - name:  Install Jenkins & java sdk
   apt: "name={{ item }} state=present"
