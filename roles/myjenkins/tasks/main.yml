@@ -23,14 +23,14 @@
         packages:
            - openjdk-8-jdk
 
-- name: Install Jenkins using Ansible
-  become: yes
-  apt:
-        name: "{{ packages }}"
-        state: present
-  vars:
-        packages:
-           - jenkins
+#- name: Install Jenkins using Ansible
+#  become: yes
+#  apt:
+#        name: "{{ packages }}"
+#        state: present
+#  vars:
+#        packages:
+#           - jenkins
 #--allow-unauthenticated
 
 - name: ensure the jenkins apt repository key is installed
