@@ -15,11 +15,11 @@
 #  command: sudo apt install -y jenkins --allow-unauthenticated
 
 - name: Install Java using Ansible
-   become: yes
-   apt:
+  become: yes
+  apt:
         name: "{{ packages }}"
         state: present
-   vars:
+  vars:
         packages:
            - openjdk-8-jdk
 
